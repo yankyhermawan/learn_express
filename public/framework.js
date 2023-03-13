@@ -21,16 +21,19 @@ app.get("/login", (req, res) => {
 });
 
 // Handle the login form submission
-app.post("/login", (req, res) => {
+app.post("/main", (req, res) => {
 	const username = req.body.username;
 	const password = req.body.password;
-	console.log(username === "admin", password === "password");
 
 	// Validate the username and password
 	if (username === "admin" && password === "password") {
-		res.redirect("/main");
+		res
+			.setHeader("Content-Type", "text/plain")
+			.sendFile(path.join(__dirname, "main.html"));
 	} else {
-		res.send("Invalid username or password");
+		res
+			.status(401)
+			.json({ success: false, message: "Invalid username or password" });
 	}
 });
 // app.get("/login", (req, res) => {

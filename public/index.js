@@ -6,7 +6,7 @@ form.addEventListener("submit", async (event) => {
 	const formData = new FormData(form);
 
 	try {
-		const response = await fetch("/login", {
+		const response = await fetch("/main", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
