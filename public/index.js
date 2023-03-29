@@ -6,16 +6,15 @@ form.addEventListener("submit", async (event) => {
 	const formData = new FormData(form);
 
 	try {
-		const response = await fetch("/main", {
+		const response = await fetch("/public/main", {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json",
+				"Content-Type": "application/x-www-form-urlencoded",
 			},
 			body: JSON.stringify(Object.fromEntries(formData.entries())),
 		});
 
 		const data = await response.json();
-		console.log(data);
 	} catch (error) {
 		console.error(error);
 	}
